@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Descarte</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="my-4 text-center">Pontos de Descarte na sua Cidade</h1>
+
+    <!-- Barra de Pesquisa -->
+    <div class="input-group mb-3 search-bar">
+        <input type="text" class="form-control" placeholder="Digite a cidade para encontrar pontos de descarte" id="city-input">
+        <div class="input-group-append">
+            <button class="btn btn-primary" onclick="searchCity()">Buscar</button>
+        </div>
+    </div>
+
+    <!-- Mapa -->
+    <div id="map"></div>
+
+    <!-- Manual -->
+    <div class="mt-4">
+        <h3>Manual de Descarte Correto</h3>
+        <p>Descarte médico: Procure sempre pontos de descarte hospitalares ou especializados.</p>
+        <p>Descarte eletrônico: Utilize pontos de coleta de eletrônicos para garantir o descarte seguro.</p>
+        <!-- ADICIONAR MAIS INSTRUÇÕES CONFORME O NECESSÁRIO -->
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+<script>
+// Inicializar mapa
+var map = L.map('map').setView([-23.5505, -46.6333], 13);  // Coordenadas de São Paulo como exemplo
+
+// Adicionar o mapa base do OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Pontos de descarte fictícios
+var pontosDescarte = [
+    {coords: [-23.5505, -46.6333], tipo: "Eletrônicos"},
+    {coords: [-23.5575, -46.6372], tipo: "Médico"},
+    {coords: [-23.5535, -46.6425], tipo: "Orgânico"}
+];
+
+// Exibe os pontos de descarte no mapa
+pontosDescarte.forEach(ponto => {
+    L.marker(ponto.coords)
+        .addTo(map)
+        .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
+});
+
+// Função para buscar a cidade e atualizar o mapa
+function searchCity() {
+    const city = document.getElementById('city-input').value;
+    if (city.toLowerCase() === 'são paulo') {
+        map.setView([-23.5505, -46.6333], 13);
+    } else {
+        alert("Cidade não encontrada. Por favor, tente outra.");
+    }
+}
+</script>
+
+</body>
+</html>

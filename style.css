@@ -1,0 +1,11 @@
+#map {
+    height: 80vh;
+}
+
+.search-bar {
+    margin-top: 20px;
+}
+
+.container {
+    max-width: 800px;
+}
