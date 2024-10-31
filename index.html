@@ -11,25 +11,31 @@
 <body>
 
 <div class="container">
-    <h1 class="my-4 text-center">Pontos de Descarte na sua Cidade</h1>
+    <h1 class="my-4 text-center text-success">Pontos de Descarte Sustentável</h1>
 
     <!-- Barra de Pesquisa -->
     <div class="input-group mb-3 search-bar">
         <input type="text" class="form-control" placeholder="Digite a cidade para encontrar pontos de descarte" id="city-input">
         <div class="input-group-append">
-            <button class="btn btn-primary" onclick="searchCity()">Buscar</button>
+            <button class="btn btn-success" onclick="searchCity()">Buscar</button>
         </div>
+    </div>
+
+    <!-- Botões adicionais -->
+    <div class="d-flex justify-content-end mb-3">
+        <button class="btn btn-outline-success mr-2" onclick="toggleManual()">Descarte Correto</button>
+        <a href="team.html" class="btn btn-outline-success">Nossa Equipe</a>
     </div>
 
     <!-- Mapa -->
     <div id="map"></div>
 
-    <!-- Manual -->
-    <div class="mt-4">
+    <!-- Manual de Descarte -->
+    <div id="manual-descarte" class="mt-4 collapse">
         <h3>Manual de Descarte Correto</h3>
-        <p>Descarte médico: Procure sempre pontos de descarte hospitalares ou especializados.</p>
-        <p>Descarte eletrônico: Utilize pontos de coleta de eletrônicos para garantir o descarte seguro.</p>
-        <!-- ADICIONAR MAIS INSTRUÇÕES CONFORME O NECESSÁRIO -->
+        <p>Descarte médico: Pontos de descarte hospitalares ou especializados.</p>
+        <p>Descarte eletrônico: Utilize pontos de coleta de eletrônicos.</p>
+        <p>Descarte orgânico: Deposite em recipientes para compostagem ou em áreas específicas de descarte.</p>
     </div>
 </div>
 
@@ -40,36 +46,46 @@
 <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 
 <script>
-// Inicializar mapa
-var map = L.map('map').setView([-23.5505, -46.6333], 13);  // Coordenadas de São Paulo como exemplo
+// Inicializa o mapa em Joinville
+var map = L.map('map').setView([-26.3044, -48.8464], 13);
 
-// Adicionar o mapa base do OpenStreetMap
+// Adiciona o mapa base do OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
-// Pontos de descarte fictícios
+// Pontos de descarte reais em Joinville
 var pontosDescarte = [
-    {coords: [-23.5505, -46.6333], tipo: "Eletrônicos"},
-    {coords: [-23.5575, -46.6372], tipo: "Médico"},
-    {coords: [-23.5535, -46.6425], tipo: "Orgânico"}
+    {coords: [-26.2872, -48.8708], tipo: "Reset Descarte Tecnológico - Jardim Iririú"},
+    {coords: [-26.2741, -48.8547], tipo: "CEU Aventureiro"},
+    {coords: [-26.2826, -48.8670], tipo: "Unidade Regional de Obras Centro-Oeste"}
 ];
 
-// Exibe os pontos de descarte no mapa
+// Adiciona os pontos de descarte reais ao mapa
 pontosDescarte.forEach(ponto => {
     L.marker(ponto.coords)
         .addTo(map)
         .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
 });
 
-// Função para buscar a cidade e atualizar o mapa
+// Pesquisa e localização de cidade
 function searchCity() {
     const city = document.getElementById('city-input').value;
-    if (city.toLowerCase() === 'são paulo') {
-        map.setView([-23.5505, -46.6333], 13);
-    } else {
-        alert("Cidade não encontrada. Por favor, tente outra.");
+    if (city) {
+        L.Control.Geocoder.nominatim().geocode(city + ", Brazil", function(results) {
+            if (results.length > 0) {
+                const { center } = results[0];
+                map.setView(center, 13);
+            } else {
+                alert("Cidade não encontrada.");
+            }
+        });
     }
+}
+
+// Mostrar/Ocultar Manual de Descarte
+function toggleManual() {
+    $('#manual-descarte').collapse('toggle');
 }
 </script>
 

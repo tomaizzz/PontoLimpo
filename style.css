@@ -1,11 +1,35 @@
+body {
+    background-color: #f4f9f4;
+    color: #2b3e2b;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #4caf50;
+}
+
 #map {
-    height: 80vh;
+    height: 70vh;
+    border-radius: 8px;
 }
 
-.search-bar {
-    margin-top: 20px;
+.search-bar, .btn-outline-success, #manual-descarte {
+    border-radius: 8px;
 }
 
-.container {
-    max-width: 800px;
+#manual-descarte {
+    background-color: #e9f7e9;
+    padding: 15px;
+    border: 1px solid #d4ecd4;
+}
+
+.btn-success, .btn-outline-success {
+    color: #4caf50;
+    background-color: #ffffff;
+    border-color: #4caf50;
+}
+
+.btn-success:hover, .btn-outline-success:hover {
+    color: #ffffff;
+    background-color: #4caf50;
 }
