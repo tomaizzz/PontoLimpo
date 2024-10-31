@@ -3,39 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa de Descarte</title>
+    <title>PontoLimpo - Mapa de Descarte</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+<!-- Cabeçalho fixo com logo e nome da empresa -->
+<header class="fixed-top p-3 bg-success text-white d-flex align-items-center justify-content-between">
+    <img src="logo.png" alt="Logo PontoLimpo" class="logo-header"> <!-- Logo da empresa -->
+    <h2 class="m-0">PontoLimpo</h2>
+</header>
+
+<div class="container" style="margin-top: 100px;">
     <h1 class="my-4 text-center text-success">Pontos de Descarte Sustentável</h1>
 
     <!-- Barra de Pesquisa -->
     <div class="input-group mb-3 search-bar">
         <input type="text" class="form-control" placeholder="Digite a cidade para encontrar pontos de descarte" id="city-input">
         <div class="input-group-append">
-            <button class="btn btn-success" onclick="searchCity()">Buscar</button>
+            <button class="btn btn-success gradient-btn" onclick="searchCity()">Buscar</button>
         </div>
-    </div>
-
-    <!-- Botões adicionais -->
-    <div class="d-flex justify-content-end mb-3">
-        <button class="btn btn-outline-success mr-2" onclick="toggleManual()">Descarte Correto</button>
-        <a href="team.html" class="btn btn-outline-success">Nossa Equipe</a>
     </div>
 
     <!-- Mapa -->
     <div id="map"></div>
+</div>
 
-    <!-- Manual de Descarte -->
-    <div id="manual-descarte" class="mt-4 collapse">
-        <h3>Manual de Descarte Correto</h3>
-        <p>Descarte médico: Pontos de descarte hospitalares ou especializados.</p>
-        <p>Descarte eletrônico: Utilize pontos de coleta de eletrônicos.</p>
-        <p>Descarte orgânico: Deposite em recipientes para compostagem ou em áreas específicas de descarte.</p>
+<!-- Menu flutuante -->
+<div class="floating-menu">
+    <button class="btn btn-primary btn-floating gradient-btn" onclick="toggleFloatingMenu()">
+        &#9776; <!-- Ícone de menu -->
+    </button>
+    <div id="menu-items" class="floating-menu-items d-none">
+        <a href="team.html" class="btn btn-light gradient-btn mb-2">Sobre Nós</a>
+        <a href="manual.html" class="btn btn-light gradient-btn">Descarte Correto</a>
     </div>
 </div>
 
@@ -83,9 +86,9 @@ function searchCity() {
     }
 }
 
-// Mostrar/Ocultar Manual de Descarte
-function toggleManual() {
-    $('#manual-descarte').collapse('toggle');
+// Menu flutuante
+function toggleFloatingMenu() {
+    $('#menu-items').toggleClass('d-none');
 }
 </script>
 
