@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="shortcut icon" href="assets/favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
 <!-- Cabeçalho fixo com logo e nome da empresa -->
 <header class="fixed-top p-3 bg-success text-white d-flex align-items-center justify-content-between">
     <img src="logo.png" alt="Logo PontoLimpo" class="logo-header"> <!-- Logo da empresa -->
-    <h2 class="m-0">PontoLimpo</h2>
+    <nav>
+        <a href="team.html" class="btn-nav">Como decartar?</a>
+        <a href="team.html" class="btn-nav">Sobre</a>
+    </nav>
 </header>
 
 <div class="container" style="margin-top: 100px;">
@@ -65,6 +68,17 @@ var pontosDescarte = [
     {coords: [-26.2826, -48.8670], tipo: "Unidade Regional de Obras Centro-Oeste"}
 ];
 
+//Personalização do ícone.
+var myIcon = L.icon({
+            iconUrl: 'assets/icon/emoji_people_24dp_0000F5_FILL0_wght400_GRAD0_opsz24.svg',  // URL da imagem do ícone padrão
+            iconSize: [32, 32],  // Tamanho do ícone
+            iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
+            popupAnchor: [0, -32],  // Posição do popup
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Sombra do marcador
+            shadowSize: [41, 41], // Tamanho da sombra
+            shadowAnchor: [13, 41] // Posição da sombra
+        });
+
 // Adiciona os pontos de descarte reais ao mapa
 pontosDescarte.forEach(ponto => {
     L.marker(ponto.coords)
@@ -91,6 +105,29 @@ function searchCity() {
 function toggleFloatingMenu() {
     $('#menu-items').toggleClass('d-none');
 }
+
+//Localização atual
+function obterLocalizacao() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var lat = position.coords.latitude;
+                    var lon = position.coords.longitude;
+                    
+                    // Atualizar o mapa com a localização do usuário
+                    map.setView([lat, lon], 13);  // Centraliza o mapa na localização atual
+                    L.marker([lat, lon], { icon: myIcon }).addTo(map)  // Adiciona um marcador na localização
+                        .bindPopup("Você está aqui!")
+                        .openPopup();
+                }, function(error) {
+                    alert("Erro ao obter a localização: " + error.message);
+                });
+            } else {
+                alert("A geolocalização não é suportada pelo seu navegador.");
+            }
+        }
+
+        // Chamar a função para obter a localização do usuário
+        obterLocalizacao();
 </script>
 
 </body>
