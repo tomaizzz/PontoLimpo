@@ -12,10 +12,10 @@
 <body>
 
 <!-- Cabeçalho fixo com logo e nome da empresa -->
-<header class="fixed-top p-3 bg-success text-white d-flex align-items-center justify-content-between">
-    <img src="logo.png" alt="Logo PontoLimpo" class="logo-header"> <!-- Logo da empresa -->
+<header class="fixed-top p-3 text-white d-flex align-items-center justify-content-between">
+    <img src="assets/img/PLhorizontalOriginal.png" alt="Logo PontoLimpo" class="logo-header"> <!-- Logo da empresa -->
     <nav>
-        <a href="team.html" class="btn-nav">Como decartar?</a>
+        <a href="team.html" class="btn-nav">Manual</a>
         <a href="team.html" class="btn-nav">Sobre</a>
     </nav>
 </header>
@@ -27,7 +27,14 @@
     <div class="input-group mb-3 search-bar">
         <input type="text" class="form-control" placeholder="Digite a cidade para encontrar pontos de descarte" id="city-input">
         <div class="input-group-append">
-            <button class="btn btn-success gradient-btn" onclick="searchCity()">Buscar</button>
+            <button class="btn btn-search" onclick="searchCity()">
+                <img src="assets/icon/search.svg" alt="">
+            </button>
+        </div>
+        <div class="input-group-append">
+            <button class="btn btn-search" onclick="searchCity()">
+                <img src="assets/icon/filter.svg" alt="">
+            </button>
         </div>
     </div>
 
@@ -69,6 +76,8 @@ var pontosDescarte = [
 ];
 
 //Personalização do ícone.
+
+//Localização Atual.
 var myIcon = L.icon({
             iconUrl: 'assets/icon/emoji_people_24dp_0000F5_FILL0_wght400_GRAD0_opsz24.svg',  // URL da imagem do ícone padrão
             iconSize: [32, 32],  // Tamanho do ícone
@@ -78,6 +87,41 @@ var myIcon = L.icon({
             shadowSize: [41, 41], // Tamanho da sombra
             shadowAnchor: [13, 41] // Posição da sombra
         });
+
+//descarte  de Eletronicos.
+var eletronicIcon = L.icon({
+            iconUrl: 'assets/icon/emoji_people_24dp_0000F5_FILL0_wght400_GRAD0_opsz24.svg',  // URL da imagem do ícone padrão
+            iconSize: [32, 32],  // Tamanho do ícone
+            iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
+            popupAnchor: [0, -32],  // Posição do popup
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Sombra do marcador
+            shadowSize: [41, 41], // Tamanho da sombra
+            shadowAnchor: [13, 41] // Posição da sombra
+        });
+
+//descarte de Bateria.
+var batteryIcon = L.icon({
+            iconUrl: 'assets/icon/emoji_people_24dp_0000F5_FILL0_wght400_GRAD0_opsz24.svg',  // URL da imagem do ícone padrão
+            iconSize: [32, 32],  // Tamanho do ícone
+            iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
+            popupAnchor: [0, -32],  // Posição do popup
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Sombra do marcador
+            shadowSize: [41, 41], // Tamanho da sombra
+            shadowAnchor: [13, 41] // Posição da sombra
+        });
+
+// descarte Reciclaveis
+var recyclableIcon = L.icon({
+            iconUrl: 'assets/icon/emoji_people_24dp_0000F5_FILL0_wght400_GRAD0_opsz24.svg',  // URL da imagem do ícone padrão
+            iconSize: [32, 32],  // Tamanho do ícone
+            iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
+            popupAnchor: [0, -32],  // Posição do popup
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Sombra do marcador
+            shadowSize: [41, 41], // Tamanho da sombra
+            shadowAnchor: [13, 41] // Posição da sombra
+        });
+
+// 
 
 // Adiciona os pontos de descarte reais ao mapa
 pontosDescarte.forEach(ponto => {

@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: #4caf50;
+    background-color: #0f5f12;
     color: #fff;
 }
 
@@ -27,7 +27,8 @@ nav>a{
     color: #fff;
 }
 nav>a:hover{
-    
+    text-decoration: none;
+    color: #bcffc5;    
 }
 
 #map {
