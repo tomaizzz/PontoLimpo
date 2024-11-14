@@ -76,5 +76,15 @@
 
 </script>
 
+<!-- Adicionar Ponto de Descarte (exibido apenas para donos de ponto de descarte) -->
+<?php
+session_start();
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == 'owner') {
+    echo '<button id="addPointButton" class="btn btn-success gradient-btn mt-3">Adicionar Ponto de Descarte</button>';
+}
+?>
+
+
+
 </body>
 </html>

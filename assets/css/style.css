@@ -95,6 +95,10 @@ nav>a:hover{
     align-items: center;
     border: 1px solid #0f5f12;
 }
+#fototime{
+    width: 5cm;
+    height: 5cm;
+}
 
 .filter-menu{
     margin-top: 10px;

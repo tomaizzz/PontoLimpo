@@ -116,6 +116,25 @@ function obterLocalizacao() {
             }
         }
 
+// Adicionar Ponto de Descarte
+document.addEventListener("DOMContentLoaded", function () {
+    const addPointButton = document.getElementById("addPointButton");
+    
+    if (addPointButton) {
+        addPointButton.addEventListener("click", function () {
+            const tipo = prompt("Tipo de Ponto de Descarte:");
+            const latitude = prompt("Latitude:");
+            const longitude = prompt("Longitude:");
+
+            if (tipo && latitude && longitude) {
+                L.marker([latitude, longitude], { icon: batteryIcon }).addTo(map)
+                    .bindPopup(`Ponto de descarte: ${tipo}`);
+            }
+        });
+    }
+});
+
+
         // Chamar a função para obter a localização do usuário
         obterLocalizacao();
 
