@@ -36,6 +36,10 @@ nav>a:hover{
     border-radius: 8px;
 }
 
+.btn-search{
+    display: flex;
+}
+
 .search-bar, .btn-outline-success, #manual-descarte {
     border-radius: 8px;
 }
@@ -75,3 +79,18 @@ nav>a:hover{
 .gradient-btn:hover {
     background: linear-gradient(to right, #81c784, #4caf50);
 }
+
+.search-btn{
+    margin: 0px 5px;
+    height: 38px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.filter-btn{
+    display: flex;
+    border-radius: 5px;
+    align-items: center;
+    border: 1px solid #0f5f12;
+}
+
