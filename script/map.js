@@ -13,6 +13,16 @@ var pontosDescarte = [
     {coords: [-26.2826, -48.8670], tipo: "Unidade Regional de Obras Centro-Oeste"}
 ];
 
+var pontosEletronicos = [
+    {coords: [-26.2868, -48.8708], tipo: "Reset Descarte Tecnológico - Jardim Iririú"}
+]
+var pontosBateria = [
+    {coords: [-26.2741, -48.8547], tipo: "CEU Aventureiro"}
+]
+var pontosReciclaveis = [
+    {coords: [-26.2826, -48.8670], tipo: "Unidade Regional de Obras Centro-Oeste"}
+]
+
 //Personalização do ícone.
 
 //Localização Atual.
@@ -28,7 +38,7 @@ var myIcon = L.icon({
 
 //descarte  de Eletronicos.
 var eletronicIcon = L.icon({
-            iconUrl: 'assets/icon/pin/blue.svg',  // URL da imagem do ícone padrão
+            iconUrl: 'assets/icon/pin/2.svg',  // URL da imagem do ícone padrão
             iconSize: [32, 32],  // Tamanho do ícone
             iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
             popupAnchor: [0, -32],  // Posição do popup
@@ -50,7 +60,7 @@ var batteryIcon = L.icon({
 
 // descarte Reciclaveis
 var recyclableIcon = L.icon({
-            iconUrl: 'assets/icon/emoji_people_24dp_0000F5_FILL0_wght400_GRAD0_opsz24.svg',  // URL da imagem do ícone padrão
+            iconUrl: 'assets/icon/pin/4.svg',  // URL da imagem do ícone padrão
             iconSize: [32, 32],  // Tamanho do ícone
             iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
             popupAnchor: [0, -32],  // Posição do popup
@@ -62,11 +72,9 @@ var recyclableIcon = L.icon({
 // 
 
 // Adiciona os pontos de descarte reais ao mapa
-pontosDescarte.forEach(ponto => {
-    L.marker(ponto.coords, {icon: batteryIcon})
-        .addTo(map)
-        .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
-});
+pontosDescarteBateria()
+pontosDescarteEletronico()
+pontosDescarteReciclaveis()
 
 // Pesquisa e localização de cidade
 function searchCity() {
@@ -110,3 +118,28 @@ function obterLocalizacao() {
 
         // Chamar a função para obter a localização do usuário
         obterLocalizacao();
+
+    // Funções que adicionam os pontos de descarte reais ao mapa
+function pontosDescarteBateria(){
+    pontosBateria.forEach(ponto => {
+        L.marker(ponto.coords, {icon: batteryIcon})
+            .addTo(map)
+            .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
+    });
+}
+
+function pontosDescarteEletronico(){
+    pontosEletronicos.forEach(ponto => {
+        L.marker(ponto.coords, {icon: eletronicIcon})
+            .addTo(map)
+            .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
+    });
+}
+
+function pontosDescarteReciclaveis(){
+    pontosReciclaveis.forEach(ponto => {
+        L.marker(ponto.coords, {icon: recyclableIcon})
+            .addTo(map)
+            .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
+    });
+}
