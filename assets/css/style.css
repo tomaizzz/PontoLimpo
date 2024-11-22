@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 body {
     background-image: url('https://images.unsplash.com/photo-1518972559570-0a2045e8a8e3'); /* Exemplo de fundo */
     background-size: cover;
@@ -6,6 +8,7 @@ body {
 }
 
 header {
+    align-items: center;
     background-color: #0f5f12;
     color: #fff;
 }
@@ -16,8 +19,23 @@ header h2 {
 }
 
 .logo-header {
-    height: 50px;
+    margin: 0px;
+    height: 40px;
     margin-right: 10px;
+}
+nav{
+    height: 100%;
+    display: flex;
+    align-items: center
+}
+
+.logo-name{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    justify-content: center;
 }
 
 nav>a{
