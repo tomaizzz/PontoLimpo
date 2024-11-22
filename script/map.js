@@ -13,21 +13,65 @@ var pontosDescarte = [
     {coords: [-26.2826, -48.8670], tipo: "Unidade Regional de Obras Centro-Oeste"}
 ];
 
-var pontosEletronicos = [
+var pontosPapel = [
     {coords: [-26.2868, -48.8708], tipo: "Reset Descarte Tecnológico - Jardim Iririú"}
 ]
-var pontosBateria = [
+var pontosPlastico = [
     {coords: [-26.2741, -48.8547], tipo: "CEU Aventureiro"}
 ]
-var pontosReciclaveis = [
+var pontosAluminio = [
     {coords: [-26.2826, -48.8670], tipo: "Unidade Regional de Obras Centro-Oeste"}
 ]
 
 //Personalização do ícone.
 
-//Localização Atual.
-var myIcon = L.icon({
-            iconUrl: 'assets/icon/emoji_people_24dp_0000F5_FILL0_wght400_GRAD0_opsz24.svg',  // URL da imagem do ícone padrão
+    //Localização Atual.
+    var myIcon = L.icon({
+                iconUrl: 'assets/icon/emoji_people_24dp_0000F5_FILL0_wght400_GRAD0_opsz24.svg',  // URL da imagem do ícone padrão
+                iconSize: [32, 32],  // Tamanho do ícone
+                iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
+                popupAnchor: [0, -32],  // Posição do popup
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Sombra do marcador
+                shadowSize: [41, 41], // Tamanho da sombra
+                shadowAnchor: [13, 41] // Posição da sombra
+            });
+
+    //descarte  de Papel.
+    var papelIcon = L.icon({
+                iconUrl: 'assets/icon/pin/azul.svg',  // URL da imagem do ícone padrão
+                iconSize: [32, 32],  // Tamanho do ícone
+                iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
+                popupAnchor: [0, -32],  // Posição do popup
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Sombra do marcador
+                shadowSize: [41, 41], // Tamanho da sombra
+                shadowAnchor: [13, 41] // Posição da sombra
+            });
+
+    //descarte de Papelão.
+    var papelaoIcon = L.icon({
+                iconUrl: 'assets/icon/pin/marrom.svg',  // URL da imagem do ícone padrão
+                iconSize: [32, 32],  // Tamanho do ícone
+                iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
+                popupAnchor: [0, -32],  // Posição do popup
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Sombra do marcador
+                shadowSize: [41, 41], // Tamanho da sombra
+                shadowAnchor: [13, 41] // Posição da sombra
+            });
+
+    // descarte Aluminio.
+    var aluminioIcon = L.icon({
+                iconUrl: 'assets/icon/pin/amarelo.svg',  // URL da imagem do ícone padrão
+                iconSize: [32, 32],  // Tamanho do ícone
+                iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
+                popupAnchor: [0, -32],  // Posição do popup
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Sombra do marcador
+                shadowSize: [41, 41], // Tamanho da sombra
+                shadowAnchor: [13, 41] // Posição da sombra
+            });
+    
+        // descarte Plástico.
+        var plasticoIcon = L.icon({
+            iconUrl: 'assets/icon/pin/vermelho.svg',  // URL da imagem do ícone padrão
             iconSize: [32, 32],  // Tamanho do ícone
             iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
             popupAnchor: [0, -32],  // Posição do popup
@@ -36,45 +80,29 @@ var myIcon = L.icon({
             shadowAnchor: [13, 41] // Posição da sombra
         });
 
-//descarte  de Eletronicos.
-var eletronicIcon = L.icon({
-            iconUrl: 'assets/icon/pin/2.svg',  // URL da imagem do ícone padrão
-            iconSize: [32, 32],  // Tamanho do ícone
-            iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
-            popupAnchor: [0, -32],  // Posição do popup
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Sombra do marcador
-            shadowSize: [41, 41], // Tamanho da sombra
-            shadowAnchor: [13, 41] // Posição da sombra
-        });
+// Filtra, no mapa, os pontos selecionados pelo usuário.
+function filtrarPonto(){
+    const opcaoFiltro = document.getElementById("filter-opt").value 
 
-//descarte de Bateria.
-var batteryIcon = L.icon({
-            iconUrl: 'assets/icon/pin/7.svg',  // URL da imagem do ícone padrão
-            iconSize: [32, 32],  // Tamanho do ícone
-            iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
-            popupAnchor: [0, -32],  // Posição do popup
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Sombra do marcador
-            shadowSize: [41, 41], // Tamanho da sombra
-            shadowAnchor: [13, 41] // Posição da sombra
-        });
+    switch(opcaoFiltro){
+        case "todos":
+        pontosDescartePapel()
+        pontosDescarteAluminio()
+        pontosDescartePlastico()
+        break;
+        case "papel":
 
-// descarte Reciclaveis
-var recyclableIcon = L.icon({
-            iconUrl: 'assets/icon/pin/4.svg',  // URL da imagem do ícone padrão
-            iconSize: [32, 32],  // Tamanho do ícone
-            iconAnchor: [16, 32],  // Posição do ponto de ancoragem (onde o marcador "aponta")
-            popupAnchor: [0, -32],  // Posição do popup
-            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png', // Sombra do marcador
-            shadowSize: [41, 41], // Tamanho da sombra
-            shadowAnchor: [13, 41] // Posição da sombra
-        });
+        break;
+        case "papelao":
 
-// 
-
+        break;
+        case ''
+    }
+}
 // Adiciona os pontos de descarte reais ao mapa
-pontosDescarteBateria()
-pontosDescarteEletronico()
-pontosDescarteReciclaveis()
+pontosDescartePapel()
+pontosDescarteAluminio()
+pontosDescartePlastico()
 
 // Pesquisa e localização de cidade
 function searchCity() {
@@ -139,25 +167,33 @@ document.addEventListener("DOMContentLoaded", function () {
         obterLocalizacao();
 
     // Funções que adicionam os pontos de descarte reais ao mapa
-function pontosDescarteBateria(){
-    pontosBateria.forEach(ponto => {
-        L.marker(ponto.coords, {icon: batteryIcon})
+function pontosDescartePapel(){
+    pontosPapel.forEach(ponto => {
+        L.marker(ponto.coords, {icon: papelIcon})
             .addTo(map)
             .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
     });
 }
 
-function pontosDescarteEletronico(){
+function pontosDescartePapelao(){
     pontosEletronicos.forEach(ponto => {
-        L.marker(ponto.coords, {icon: eletronicIcon})
+        L.marker(ponto.coords, {icon: papelaoIcon})
             .addTo(map)
             .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
     });
 }
 
-function pontosDescarteReciclaveis(){
-    pontosReciclaveis.forEach(ponto => {
-        L.marker(ponto.coords, {icon: recyclableIcon})
+function pontosDescartePlastico(){
+    pontosPlastico.forEach(ponto => {
+        L.marker(ponto.coords, {icon: plasticoIcon})
+            .addTo(map)
+            .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
+    });
+}
+
+function pontosDescarteAluminio(){
+    pontosAluminio.forEach(ponto => {
+        L.marker(ponto.coords, {icon: aluminioIcon})
             .addTo(map)
             .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
     });
