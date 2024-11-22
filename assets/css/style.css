@@ -107,6 +107,8 @@ nav>a:hover{
     align-items: center;
 }
 
+/* Stilos do Filtro */
+
 .filter-btn{
     display: flex;
     border-radius: 5px;
@@ -119,13 +121,14 @@ nav>a:hover{
 }
 
 .filter-menu{
+    display: none;
+    text-align: end;
     margin-top: 10px;
     width: 100%;
     border-radius: 5px;
 }
 
 select{
-    justify-content: right;
     border: none;
     border-radius: 5px;
     margin: 5px;
