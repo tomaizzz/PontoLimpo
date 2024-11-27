@@ -1,15 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
+:root{
+    --color-01: #0f5f12;
+}
+
 body {
     background-image: url('https://images.unsplash.com/photo-1518972559570-0a2045e8a8e3'); /* Exemplo de fundo */
     background-size: cover;
     color: #2b3e2b;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 header {
     align-items: center;
-    background-color: #0f5f12;
+    background-color: var(--color-01);
     color: #fff;
 }
 
@@ -27,6 +31,10 @@ nav{
     height: 100%;
     display: flex;
     align-items: center
+}
+
+#logo-home{
+    cursor: pointer;
 }
 
 .logo-name{
@@ -135,4 +143,7 @@ select{
     width: 150px;
     padding: 5px;
 }
+
+/*Aba Manual*/
+
 

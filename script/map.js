@@ -79,30 +79,16 @@ var pontosAluminio = [
             shadowSize: [41, 41], // Tamanho da sombra
             shadowAnchor: [13, 41] // Posição da sombra
         });
-
 // Filtra, no mapa, os pontos selecionados pelo usuário.
 function filtrarPonto(){
-    const opcaoFiltro = document.getElementById("filter-opt").value 
-    
-    var i=0
-    switch(opcaoFiltro){
-        case "todos":
-        pontosDescartePapel()
-        pontosDescarteAluminio()
-        pontosDescartePlastico()
-        break;
-        case "papel":
-            pontosDescartePapel()
-        break;
-        case "papelao":
-            pontosDescartePapelao()
-        break;
-        case "aluminio":
-            pontosDescarteAluminio()
-        break;
-    }
+    //use essa função ChatGpt
 }
 // Adiciona os pontos de descarte reais ao mapa
+    pontosDescartePapel()
+    pontosDescartePlastico()
+    pontosDescarteAluminio()
+
+
 
 
 // Pesquisa e localização de cidade

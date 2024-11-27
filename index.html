@@ -13,7 +13,7 @@
 
 <!-- Cabeçalho fixo com logo e nome da empresa -->
 <header class="fixed-top p-3 text-white d-flex align-items-center justify-content-between">
-    <nav>
+    <nav id="logo-home">
             <img src="assets/img/PL.png" alt="Logo PontoLimpo" class="logo-header"> <!-- Logo da empresa -->
             <h1 class="logo-name">Ponto Limpo</h1>
     </nav>
@@ -39,7 +39,7 @@
             </button>
         </div>
         <div class="filter-menu">
-            <select name="Tipo" id="filter-opt" onchange="filtrarPonto()">
+            <select name="Tipo" id="filter-opt" onclick="filtrarPonto()">
                     <option value="todos">Todos</option>
                     <option value="papelao">Papelão</option>
                     <option value="papel">Papel</option>
