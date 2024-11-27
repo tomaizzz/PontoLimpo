@@ -83,7 +83,8 @@ var pontosAluminio = [
 // Filtra, no mapa, os pontos selecionados pelo usuário.
 function filtrarPonto(){
     const opcaoFiltro = document.getElementById("filter-opt").value 
-
+    
+    var i=0
     switch(opcaoFiltro){
         case "todos":
         pontosDescartePapel()
@@ -91,18 +92,18 @@ function filtrarPonto(){
         pontosDescartePlastico()
         break;
         case "papel":
-
+            pontosDescartePapel()
         break;
         case "papelao":
-
+            pontosDescartePapelao()
         break;
-        case ''
+        case "aluminio":
+            pontosDescarteAluminio()
+        break;
     }
 }
 // Adiciona os pontos de descarte reais ao mapa
-pontosDescartePapel()
-pontosDescarteAluminio()
-pontosDescartePlastico()
+
 
 // Pesquisa e localização de cidade
 function searchCity() {
