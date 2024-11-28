@@ -6,23 +6,42 @@
     <title>Manual de Descarte - PontoLimpo</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="shortcut icon" href="assets/favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/manual.css">
 </head>
 <body>
-
+        <a href="index.html" class="btn btn-success gradient-btn mt-4">Voltar</a>
 <div class="container mt-5">
     <h1 class="title-manual">Manual de Descarte</h1>
     <p class="mt-4">
-        Este manual orienta o descarte correto dos principais tipos de resíduos:
+        O que deseja descartar?
     </p>
-    <ul>
-        <li><strong>Resíduos Eletrônicos:</strong> Lâmpadas, pilhas e aparelhos eletrônicos devem ser entregues em locais apropriados de descarte eletrônico.</li>
-        <li><strong>Resíduos Orgânicos:</strong> Utilize recipientes para compostagem ou locais especializados para resíduos orgânicos.</li>
-        <li><strong>Resíduos Médicos:</strong> Descarte em pontos de coleta específicos para resíduos hospitalares.</li>
-    </ul>
+    <nav>
 
-    <a href="index.html" class="btn btn-success gradient-btn mt-4">Voltar para a Página Inicial</a>
+    <!-- Botoes com opçoes de escolha-->
+        <div class="opt">
+                <input type="button" class="opt-filter" id="papel-btn"  value="Papel" onclick="clickPapel()">
+                <input type="button" class="opt-filter" id="aluminio-btn" value="Aluminio" onclick="clickAluminio()">
+                <input type="button" class="opt-filter" id="plastico-btn" value="Plastico" onclick="clickPlastico()">
+                <input type="button" class="opt-filter" id="papelao-btn" value="Papelão" onclick="clickPapelao()">
+        </div>
+    </nav>
 </div>
+
+<!-- Corpo onde serão explicadas as formas de descarte de cada opção -->
+<section class="cont-opt" id="cont-papel">
+    <p>papel</p>
+</section>
+<section class="cont-opt" id="cont-aluminio">
+    <p>aluminio</p>
+</section>
+<section class="cont-opt" id="cont-plastico">
+    <p>plastico</p>
+</section>
+<section class="cont-opt" id="cont-papelao">
+    <p>papelao</p>
+</section>
+
+<script src="./script/manual.js"></script>
 
 </body>
 </html>

@@ -23,6 +23,10 @@ var pontosAluminio = [
     {coords: [-26.2826, -48.8670], tipo: "Unidade Regional de Obras Centro-Oeste"}
 ]
 
+var pontosPapelao = [
+    {coords: [-26.2926, -48.8070], tipo: "Unidade Regional de Obras Centro-Oeste"}
+]
+
 //Personalização do ícone.
 
     //Localização Atual.
@@ -80,13 +84,41 @@ var pontosAluminio = [
             shadowAnchor: [13, 41] // Posição da sombra
         });
 // Filtra, no mapa, os pontos selecionados pelo usuário.
+
+var ativado = true
+
+
+/*
+
 function filtrarPonto(){
-    //use essa função ChatGpt
+   const valorFiltro = document.getElementById("filter-opt").value
+
+
+   switch(valorFiltro){
+        case "todos":
+            pontosDescartePapel()
+            pontosDescartePapelao()
+            pontosDescartePlastico()
+            pontosDescarteAluminio()
+        break
+        case "papel":
+            desativado === true
+            pontosDescartePapel()
+        break
+
+   }
 }
+*/
+
+
 // Adiciona os pontos de descarte reais ao mapa
-    pontosDescartePapel()
-    pontosDescartePlastico()
-    pontosDescarteAluminio()
+const intervalo = setInterval(pontosDescartePapel(), 100)
+
+pontosDescartePapelao()
+pontosDescartePlastico()
+pontosDescarteAluminio()
+
+
 
 
 
@@ -155,15 +187,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Funções que adicionam os pontos de descarte reais ao mapa
 function pontosDescartePapel(){
-    pontosPapel.forEach(ponto => {
-        L.marker(ponto.coords, {icon: papelIcon})
-            .addTo(map)
-            .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
-    });
+    if(ativado){
+        pontosPapel.forEach(ponto => {
+            L.marker(ponto.coords, {icon: papelIcon})
+                .addTo(map)
+                .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
+        });
+    }
 }
 
+
 function pontosDescartePapelao(){
-    pontosEletronicos.forEach(ponto => {
+    pontosPapelao.forEach(ponto => {
         L.marker(ponto.coords, {icon: papelaoIcon})
             .addTo(map)
             .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
@@ -185,3 +220,4 @@ function pontosDescarteAluminio(){
             .bindPopup(`Ponto de descarte: ${ponto.tipo}`);
     });
 }
+
