@@ -3,13 +3,14 @@ const aluminio = document.getElementById("aluminio-btn")
 const plastico = document.getElementById("plastico-btn")
 const papelao = document.getElementById("papelao-btn")
 
+const defaultBox = document.getElementById("cont-default")
 const papelBox = document.getElementById("cont-papel")
 const aluminioBox = document.getElementById("cont-aluminio")
 const plasticoBox = document.getElementById("cont-plastico")
 const papelaoBox = document.getElementById("cont-papelao")
 
 function ativarBox(box){
-    box.style.display = "block"
+    box.style.display = "flex"
 }
 
 function desativarBox(box){
@@ -32,6 +33,7 @@ function clickPapel(){
     desativarBotao(plastico)
     desativarBotao(papelao)
 
+    desativarBox(defaultBox)
     ativarBox(papelBox)
     desativarBox(aluminioBox)
     desativarBox(plasticoBox)
@@ -44,6 +46,7 @@ function clickAluminio(){
     desativarBotao(plastico)
     desativarBotao(papelao)
 
+    desativarBox(defaultBox)
     ativarBox(aluminioBox)
     desativarBox(papelBox)
     desativarBox(plasticoBox)
@@ -56,6 +59,7 @@ function clickPlastico(){
     desativarBotao(papel)
     desativarBotao(papelao)
 
+    desativarBox(defaultBox)
     ativarBox(plasticoBox)
     desativarBox(aluminioBox)
     desativarBox(papelBox)
@@ -68,6 +72,7 @@ function clickPapelao(){
     desativarBotao(plastico)
     desativarBotao(papel)
 
+    desativarBox(defaultBox)
     ativarBox(papelaoBox)
     desativarBox(aluminioBox)
     desativarBox(plasticoBox)

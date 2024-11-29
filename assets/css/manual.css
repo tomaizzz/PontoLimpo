@@ -23,7 +23,7 @@ h1{
     font-weight: 600;
 }
 
-p{
+h2{
     font-size: 18px
 }
 
@@ -47,7 +47,33 @@ p{
 }
 
 .cont-opt{
+    width: 100vw;
+    justify-content: center;
+
+}
+
+.cont-default{
+    display: flex;
+}
+
+#cont-papel, #cont-plastico, #cont-aluminio, #cont-papelao{
     display: none;
+}
+/*Passo a passo de como descartar*/
+
+.passo{
+    margin: 60px 10px;
+    padding: 30px;
+    width: 300px;
+    height: 350px;
+    text-align: center;
+    color: var(--color-01);
+}
+
+.img-passo{
+    margin: 10px;
+    width: 200px;
+    height: 200px;
 }
 
 /* Efeito gradiente nos botões ao passar o mouse */
