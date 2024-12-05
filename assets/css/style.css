@@ -145,4 +145,7 @@ nav>a:hover{
 }
 /*Aba Manual*/
 
+.text-justify {
+    text-align: justify;
+}
 
