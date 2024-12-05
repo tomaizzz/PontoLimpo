@@ -52,8 +52,13 @@ h2{
 
 }
 
-.cont-default{
+#cont-default{
+    position: absolute;
+    top: 45%;
+    width: 100%;
     display: flex;
+    text-align: center;
+    align-items: center;
 }
 
 #cont-papel, #cont-plastico, #cont-aluminio, #cont-papelao{
